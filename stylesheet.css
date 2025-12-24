@@ -999,7 +999,7 @@ audio {
 	100% {
 		-ms-transform:translate(0px,0px);
 	}
-}o
+}
 @keyframes bannar_come {
 	0%{
 		transform:translate(0px,-1000px);
@@ -1211,9 +1211,13 @@ audio {
 
 .cake-cover {
 	margin-top: 50px;
+	position: relative;
+	min-height: 300px;
+	width: 100%;
+	overflow: visible;
 }
 .message {
-    margin-top: 150px;
+    margin-top: 30px;
     display: none;
     /* Glassmorphism Effect */
     background: rgba(255, 255, 255, 0.2); 
@@ -1293,3 +1297,39 @@ padding: 12px 25px;
     		-webkit-transform: scale(0.9);
     	}
     }*/
+
+/* Mobile Responsive Styles */
+@media only screen and (max-width: 768px) {
+    .cake-cover {
+        margin-top: 30px;
+        min-height: 200px;
+    }
+
+    .cake {
+        width: 200px !important;
+        height: 200px !important;
+        margin-left: -100px !important;
+    }
+
+    .message {
+        margin-top: 20px;
+        padding: 30px 15px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .cake-cover {
+        min-height: 150px;
+    }
+
+    .cake {
+        width: 150px !important;
+        height: 150px !important;
+        margin-left: -75px !important;
+    }
+
+    .message {
+        margin-top: 15px;
+        padding: 25px 12px;
+    }
+}
