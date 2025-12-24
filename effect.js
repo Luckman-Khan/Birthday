@@ -69,12 +69,42 @@ $('document').ready(function(){
         });
     });
 
-    $('#light_candle').click(function(){
-        $('.fuego').fadeIn('slow');
-        $(this).fadeOut('slow').promise().done(function(){
-            $('#wish_message').fadeIn('slow');
-        });
+  $('#light_candle').click(function(){
+    $('.fuego').fadeIn('slow');
+    
+    // --- Blow out candle logic ---
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ audio: true }).then(function(stream) {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const analyser = audioContext.createAnalyser();
+            const microphone = audioContext.createMediaStreamSource(stream);
+            const node = audioContext.createScriptProcessor(2048, 1, 1);
+
+            analyser.fftSize = 1024;
+            microphone.connect(analyser);
+            analyser.connect(node);
+            node.connect(audioContext.destination);
+
+            node.onaudioprocess = function() {
+                const array = new Uint8Array(analyser.frequencyBinCount);
+                analyser.getByteFrequencyData(array);
+                let values = 0;
+                for (let i = 0; i < array.length; i++) values += array[i];
+                
+                const average = values / array.length;
+
+                if (average > 50) { // Blow threshold
+                    $('.fuego').fadeOut('slow'); 
+                    stream.getTracks().forEach(track => track.stop()); // Stop mic
+                }
+            };
+        }).catch(err => console.log("Mic access denied: ", err));
+    }
+
+    $(this).fadeOut('slow').promise().done(function(){
+        $('#wish_message').fadeIn('slow');
     });
+});
         
     $('#wish_message').click(function(){
         // Trigger Confetti Cannon
