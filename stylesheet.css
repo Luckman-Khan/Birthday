@@ -1,5 +1,4 @@
 body {
-	/*background-color: #FFDAB9;	*/
 	background-color: #000;
 	-webkit-transition:background-color linear 5s;
 	-moz-transition:background-color linear 5s;
@@ -7,111 +6,50 @@ body {
 	-ms-transition:background-color linear 5s;
 	transition:background-color linear 5s;
 	overflow-x:hidden;
+	font-family: 'Poppins', sans-serif;
+
 }
+
+/* Subtle texture overlay for a modern feel */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/cubes.png');
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 1;
+}
+
 .container {
 	display: none;
 }
+
 .peach {
-	background-color: #FFDAB9;
-	
+	background-color: #ff9a9e; /* Modern base pink */
 }
+
+/* Updated Step 1: Modern Mesh Gradient Animation */
 .peach-after {
-	-webkit-animation:peach_alive linear 8s infinite;
-	-moz-animation:peach_alive linear 8s infinite;
-	-o-animation:peach_alive linear 8s infinite;
-	-ms-animation:peach_alive linear 8s infinite;
-	animation:peach_alive linear 8s infinite;
+    background: linear-gradient(125deg, #ff9a9e 0%, #fad0c4 25%, #fbc2eb 50%, #a18cd1 75%, #ff9a9e 100%);
+    background-size: 400% 400%;
+    -webkit-animation: meshGradient 15s ease infinite;
+    -moz-animation: meshGradient 15s ease infinite;
+    -o-animation: meshGradient 15s ease infinite;
+    -ms-animation: meshGradient 15s ease infinite;
+    animation: meshGradient 15s ease infinite;
 }
 
-@-webkit-keyframes peach_alive {
-	0%{
-		background-color: #FFDAB9;
-	}
-	25%{
-		background-color: #FFE4B5;
-	}
-	50%{
-		background-color: #FFDAB9;
-	}
-	75%{
-		background-color: #FFEFD5;
-	}
-	100%{
-		background-color: #FFDAB9;
-	}
-}
-@-moz-keyframes peach_alive {
-	0%{
-		background-color: #FFDAB9;
-	}
-	25%{
-		background-color: #FFE4B5;
-	}
-	50%{
-		background-color: #FFDAB9;
-	}
-	75%{
-		background-color: #FFEFD5;
-	}
-	100%{
-		background-color: #FFDAB9;
-	}
+@keyframes meshGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-@-o-keyframes peach_alive {
-	0%{
-		background-color: #FFDAB9;
-	}
-	25%{
-		background-color: #FFE4B5;
-	}
-	50%{
-		background-color: #FFDAB9;
-	}
-	75%{
-		background-color: #FFEFD5;
-	}
-	100%{
-		background-color: #FFDAB9;
-	}
-}
-
-@-ms-keyframes peach_alive {
-	0%{
-		background-color: #FFDAB9;
-	}
-	25%{
-		background-color: #FFE4B5;
-	}
-	50%{
-		background-color: #FFDAB9;
-	}
-	75%{
-		background-color: #FFEFD5;
-	}
-	100%{
-		background-color: #FFDAB9;
-	}
-}
-
-@keyframes peach_alive {
-	0%{
-		background-color: #FFDAB9;
-	}
-	25%{
-		background-color: #FFE4B5;
-	}
-	50%{
-		background-color: #FFDAB9;
-	}
-	75%{
-		background-color: #FFEFD5;
-	}
-	100%{
-		background-color: #FFDAB9;
-	}
-}
-
+/* ===================================================================
+   KEEPING ALL YOUR ORIGINAL POSITIONING CODE BELOW UNCHANGED
+   =================================================================== */
 
 .bulb {
 	width: 50px;
@@ -125,6 +63,11 @@ body {
 .bulb-holder {
 	height: 70px;
 }
+
+/* ... [Include all your original .bulb-glow classes and @keyframes here] ... */
+/* ... [Include all your original .bannar and .balloons classes here] ... */
+/* ... [Include all your original .cake and .message classes here] ... */
+/* ... [Include all your original .btn-primary and @media classes here] ... */
 
 .bulb-glow-yellow {
 	background-image: url('bulb_yellow.png');
@@ -1092,6 +1035,8 @@ audio {
 	color: #BF4136;
 	text-shadow: 5px 5px 5px #FFF;
 	display: none;
+	font-family: 'Poppins', sans-serif;
+    font-weight: 800;
 }
 #b1,#b11 {
 	background-image: url('b1.png');
@@ -1268,17 +1213,33 @@ audio {
 	margin-top: 50px;
 }
 .message {
-	margin-top: 200px;
-	display: none;
+    margin-top: 150px;
+    display: none;
+    /* Glassmorphism Effect */
+    background: rgba(255, 255, 255, 0.2); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    
+    /* Layout & Styling */
+    padding: 50px 20px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
+
 .message p {
-	font-family: 'Signika', sans-serif;
-	font-size: 30px;
-	text-transform: uppercase;
-	color: #C4515C;
-	text-shadow: 2px 2px 2px #FFF;
-	display: none;
-	font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    color: #4a4a4a;
+    display: none;
+    font-weight: 500;
+    line-height: 1.6;
+    text-shadow: none; /* Removed old shadow for a cleaner look */
+    text-transform: none; /* Changed to normal case for a modern feel */
 }
 
 .btn-primary {
@@ -1289,16 +1250,40 @@ audio {
         font-weight: 700;
         color: #fff;
         background-color: #466baf;
+		font-family: 'Poppins', sans-serif;
+   		font-weight: 700;
+padding: 12px 25px;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    margin: 5px;
+    display: inline-block;
+
+    /* Modern Styling Changes */
+    border: none;
+    border-radius: 50px; /* Pill shape */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Elegant purple gradient */
+    box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
+    transition: all 0.3s ease; /* Smooth transition for hover */
+    cursor: pointer;
+    outline: none !important;
 }
-    .btn-primary:hover,
-    .btn-primary:focus,
-    .btn-primary:active,
-    .btn-primary.active,
-    .open .dropdown-toggle.btn-primary {
-        border-color: #fff;
-        color: #fff;
-        background-color: #466baf;
-    }
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    /* Modern Hover Effects */
+    transform: translateY(-3px); /* Subtle lift */
+    box-shadow: 0 8px 25px rgba(118, 75, 162, 0.4);
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%); /* Reverse gradient */
+    color: #fff;
+    border: none;
+}
+
+.btn-primary:active {
+    transform: scale(0.98); /* Click feedback */
+}
 
 
 
